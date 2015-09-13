@@ -1,0 +1,99 @@
+development:
+  NameRegEnabled:
+    args:
+  NameReg:
+    args:
+  ContractProvider:
+    args:
+  PermissionsDb:
+    deploy: false
+  DepositsDb:
+    deploy: false
+  CreditsDb:
+    deploy: false
+  LCDb:
+    deploy: false
+  Bank:
+    deploy: false
+  BOAPermissionsDb:
+    instanceOf: PermissionsDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOAPermissionsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boapermsdb", $BOAPermissionsDb)
+  BOADepositsDb:
+    instanceOf: DepositsDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOADepositsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boadepositsdb", $BOADepositsDb)
+  BOACreditsDb:
+    instanceOf: CreditsDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOACreditsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boacreditsdb", $BOACreditsDb)
+  BOALCDb:
+    instanceOf: LCDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOALCDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boalcdb", $BOALCDb)
+  BOABank:
+    instanceOf: Bank
+    args:
+      - $NameReg
+    onDeploy:
+      - BOABank.setNameRegAddress($NameReg)
+      - NameReg.addContract("boabank", $BOABank)
+  BOBPermissionsDb:
+    instanceOf: PermissionsDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOBPermissionsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobpermsdb", $BOBPermissionsDb)
+  BOBDepositsDb:
+    instanceOf: DepositsDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOBDepositsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobdepositsdb", $BOBDepositsDb)
+  BOBCreditsDb:
+    instanceOf: CreditsDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOBCreditsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobcreditsdb", $BOBCreditsDb)
+  BOBLCDb:
+    instanceOf: LCDb
+    args:
+      - $NameReg
+    onDeploy:
+      - BOBLCDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boblcdb", $BOBLCDb)
+  BOBBank:
+    instanceOf: Bank
+    args:
+      - $NameReg
+    onDeploy:
+      - BOBBank.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobbank", $BOBBank)
+  Dummy:
+    args:
+      - "a"
+      - "b"
+      - "c"
+      - "d"
+
+
+staging:
+  SimpleStorage:
+    args:
+      - 100

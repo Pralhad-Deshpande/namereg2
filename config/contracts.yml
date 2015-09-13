@@ -1,0 +1,87 @@
+development:
+  NameRegEnabled:
+    args:
+  ContractProvider:
+    args:
+  NameReg:
+    args:
+  PermissionsDb:
+    deploy: false
+  DepositsDb:
+    deploy: false
+  CreditsDb:
+    deploy: false
+  LCDb:
+    deploy: false
+  Bank:
+    deploy: false
+  BOAPermissionsDb:
+    instanceOf: PermissionsDb
+    args:
+  BOADepositsDb:
+    instanceOf: DepositsDb
+    args:
+  BOACreditsDb:
+    instanceOf: CreditsDb
+    args:
+  BOALCDb:
+    instanceOf: LCDb
+    args:
+  BOABank:
+    instanceOf: Bank
+    args:
+  BOBPermissionsDb:
+    instanceOf: PermissionsDb
+    args:
+  BOBDepositsDb:
+    instanceOf: DepositsDb
+    args:
+  BOBCreditsDb:
+    instanceOf: CreditsDb
+    args:
+  BOBLCDb:
+    instanceOf: LCDb
+    args:
+  BOBBank:
+    instanceOf: Bank
+    args:
+  Dummy:
+    args:
+      - $NameReg
+      - $BOAPermissionsDb
+      - $BOADepositsDb
+      - $BOACreditsDb
+      - $BOALCDb
+      - $BOABank
+      - $BOBPermissionsDb
+      - $BOBDepositsDb
+      - $BOBCreditsDb
+      - $BOBLCDb
+      - $BOBBank
+    onDeploy:
+      - BOAPermissionsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boapermsdb", $BOAPermissionsDb)
+      - BOADepositsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boadepositsdb", $BOADepositsDb)
+      - BOACreditsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boacreditsdb", $BOACreditsDb)
+      - BOALCDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boalcdb", $BOALCDb)
+      - BOABank.setNameRegAddress($NameReg)
+      - NameReg.addContract("boabank", $BOABank)
+      - BOBPermissionsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobpermsdb", $BOBPermissionsDb)
+      - BOBDepositsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobdepositsdb", $BOBDepositsDb)
+      - BOBCreditsDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobcreditsdb", $BOBCreditsDb)
+      - BOBLCDb.setNameRegAddress($NameReg)
+      - NameReg.addContract("boblcdb", $BOBLCDb)
+      - BOBBank.setNameRegAddress($NameReg)
+      - NameReg.addContract("bobbank", $BOBBank)
+
+
+staging:
+  SimpleStorage:
+    args:
+      - 100
